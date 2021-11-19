@@ -1,21 +1,20 @@
 #ifndef FILEREADER_H_INCLUDED
 #define FILEREADER_H_INCLUDED
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
 
 class FileReader {
 
     public:
-        FileReader(string n, string m); // construtor
+        FileReader(); // construtor
         ~FileReader(); // destrutor
-        void info(); // operacoes
-        float getNota();
-        string getNome();
-        void setNota(float valor);
-        bool verificaAprovado();
+        std::vector<std::string> readTikTok(std::string tikTokFile); // função que lê o arquivo .csv e passa as informações para um vector
+        //void writeInBinFile(vector<cringeData> &data); //pega as informações do vector e escreve no arquivo .bin
 
     private:
-        string nome; // dados
-        string matricula;
-        float nota;
 };
 
 #endif // FILEREADER_H_INCLUDED
