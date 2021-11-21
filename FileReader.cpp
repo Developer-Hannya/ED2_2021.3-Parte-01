@@ -8,11 +8,11 @@ FileReader::~FileReader(){
 
 }
 
-vector<string> FileReader::readTikTok(string tikTokFile) {
+vector<TikTokData> FileReader::readTikTok(string tikTokFile) {
 
     ifstream file;
     string info;
-    vector<string> data;
+    vector<TikTokData> data;
 
     file.open(tikTokFile);
     getline(file, info);
@@ -30,8 +30,8 @@ vector<string> FileReader::readTikTok(string tikTokFile) {
                 getline(dataFromLine, upvotes, ',');
                 getline(dataFromLine, appVersion, ',');
                 getline(dataFromLine, postDate, ',');
-                cringeData element;
-                element.setData(id, review, upvotes, appVersion, postDate);
+                TikTokData element;
+                element.setInfo(id, review, upvotes, appVersion, postDate);
                 data.push_back(element);
             }
         }
@@ -41,4 +41,8 @@ vector<string> FileReader::readTikTok(string tikTokFile) {
         std::cout << "Não foi possível abrir o arquivo." << std::endl;
     }
     return data;
+}
+
+void FileReader::writeInBinFile(std::vector<TikTokData> &data) {
+
 }

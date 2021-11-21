@@ -5,14 +5,15 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include "TikTokData.h"
 
 class FileReader {
 
     public:
         FileReader(); // construtor
         ~FileReader(); // destrutor
-        std::vector<std::string> readTikTok(std::string tikTokFile); // função que lê o arquivo .csv e passa as informações para um vector
-        //void writeInBinFile(vector<cringeData> &data); //pega as informações do vector e escreve no arquivo .bin
+        std::vector<TikTokData> readTikTok(std::string tikTokFile); // função que lê o arquivo .csv e passa as informações para um vector
+        void writeInBinFile(std::vector<TikTokData> &data); //pega as informações do vector e escreve no arquivo .bin
 
     private:
 };
