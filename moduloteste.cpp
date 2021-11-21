@@ -19,14 +19,14 @@ void moduloteste::acessaRegistro(int i)
     arq = fopen("Tiktok.bin", "rb");
     if (arq == NULL)  // Se houve erro na abertura
     {
-        printf("Problemas na abertura do arquivo\n");
+       cout<<"Problemas na abertura do arquivo\n"<<endl;
         return;
     }
     result = fread (&Vet[0], sizeof(double), 100, arq);
-    printf("Nro de elementos lidos: %d\n", result);
+    cout<<"Nro de elementos lidos:"<< result<< endl;
 
     for (i=0; i<result; i++)
-        printf("%lf\n", Vet[i]);
+        cout<< Vet[i]<< endl;
 
     fclose(arq);
 };
