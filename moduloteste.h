@@ -9,8 +9,8 @@ class moduloteste
        moduloteste();
        ~moduloteste();
 
-       void acessaRegistro(int i);
-       void testeImportacao();
+       void acessaRegistro(int i,vector<TikTokData> dados);
+       void testeImportacao(vector<TikTokData> dados);
 
 };
 
