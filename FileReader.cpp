@@ -8,11 +8,11 @@ FileReader::~FileReader(){
 
 }
 
-vector<string> FileReader::readTikTok(string tikTokFile) {
+std::vector<TikTokData> FileReader::readTikTok(std::string tikTokFile) {
 
-    ifstream file;
-    string info;
-    vector<string> data;
+    std::ifstream file;
+    std::string info;
+    std::vector<TikTokData> data;
 
     file.open(tikTokFile);
     getline(file, info);
@@ -23,15 +23,15 @@ vector<string> FileReader::readTikTok(string tikTokFile) {
                 continue;
             }
             else {
-                istringstream dataFromLine(info);
-                string id, review, upvotes, appVersion, postDate;
+                std::istringstream dataFromLine(info);
+                std::string id, review, upvotes, appVersion, postDate;
                 getline(dataFromLine, id, ',');
                 getline(dataFromLine, review, ',');
                 getline(dataFromLine, upvotes, ',');
                 getline(dataFromLine, appVersion, ',');
                 getline(dataFromLine, postDate, ',');
-                cringeData element;
-                element.setData(id, review, upvotes, appVersion, postDate);
+                TikTokData element;
+                element.setInfo(id, review, upvotes, appVersion, postDate);
                 data.push_back(element);
             }
         }
@@ -41,4 +41,13 @@ vector<string> FileReader::readTikTok(string tikTokFile) {
         std::cout << "Não foi possível abrir o arquivo." << std::endl;
     }
     return data;
+}
+
+void FileReader::writeInBinFile(std::vector<TikTokData> &data) {
+    std::ofstream bin("tiktok_app_reviews.bin", std::ios::out | std::ios::binary);
+    for(int i = 0; i < data.size(); i++) {
+        bin << data[i].getId() << ", " << data[i].getReview() << ", " << data[i].getUpVotes() << ", " <<
+        data[i].getAppVersion() << ", " << data[i].getPostDate() << std::endl;
+    }
+    bin.close();
 }

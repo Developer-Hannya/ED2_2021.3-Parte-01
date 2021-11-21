@@ -1,0 +1,52 @@
+# depslib dependency file v1.0
+1637519999 source:c:\users\bernardo\ed2_2021.3\ed2_2021.3\main.cpp
+	<iostream>
+	<fstream>
+	<iomanip>
+	<string>
+	<vector>
+	"FileReader.h"
+	"TikTokData.h"
+
+1637508602 c:\users\bernardo\ed2_2021.3\ed2_2021.3\filereader.h
+	<fstream>
+	<iostream>
+	<sstream>
+	<string>
+	<vector>
+	"TikTokData.h"
+
+1637511317 c:\users\bernardo\ed2_2021.3\ed2_2021.3\tiktokdata.h
+	<string>
+	<vector>
+
+1637519999 source:c:\users\bernardo\documents\c++\trabalhoed2parte01\main.cpp
+	<iostream>
+	<fstream>
+	<iomanip>
+	<string>
+	<vector>
+	"FileReader.h"
+	"TikTokData.h"
+
+1637526808 c:\users\bernardo\documents\c++\trabalhoed2parte01\filereader.h
+	<fstream>
+	<iostream>
+	<sstream>
+	<string>
+	<vector>
+	"TikTokData.h"
+
+1637529186 c:\users\bernardo\documents\c++\trabalhoed2parte01\tiktokdata.h
+	<string>
+	<vector>
+
+1637529195 source:c:\users\bernardo\documents\c++\trabalhoed2parte01\tiktokdata.cpp
+	<string>
+	<iostream>
+	"TikTokData.h"
+
+1637526269 source:c:\users\bernardo\documents\c++\trabalhoed2parte01\filereader.cpp
+	"FileReader.h"
+	<vector>
+
