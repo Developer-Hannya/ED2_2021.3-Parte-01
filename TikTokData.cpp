@@ -64,10 +64,10 @@ std::string TikTokData::getPostDate() {
 }
 
 void TikTokData::getData() {
-    std::cout<< getId() << ", ";
-    std::cout<< getReview() << ", ";
-    std::cout<< getUpVotes() << ", ";
-    std::cout<< getAppVersion() << ", ";
+    std::cout<< getId();
+    std::cout<< getReview();
+    std::cout<< getUpVotes();
+    std::cout<< getAppVersion();
     std::cout<< getPostDate();
     std::cout<< std::endl;
 }
