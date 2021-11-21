@@ -22,7 +22,7 @@ class TikTokData {
         std::string getUpVotes();
         std::string getAppVersion();
         std::string getPostDate();
-        std::string getData();
+        void getData();
 
     private:
         std::string id;

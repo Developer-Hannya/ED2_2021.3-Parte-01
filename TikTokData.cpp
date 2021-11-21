@@ -63,10 +63,11 @@ std::string TikTokData::getPostDate() {
     return this->postDate;
 }
 
-std::string TikTokData::getData() {
-    std::cout<< getId() << ', ';
-    std::cout<< getReview() << ', ';
-    std::cout<< getUpVotes() << ', ';
-    std::cout<< getAppVersion() << ', ';
-    std::cout<< getPostDate() << std::endl;
+void TikTokData::getData() {
+    std::cout<< getId() << ", ";
+    std::cout<< getReview() << ", ";
+    std::cout<< getUpVotes() << ", ";
+    std::cout<< getAppVersion() << ", ";
+    std::cout<< getPostDate();
+    std::cout<< std::endl;
 }
