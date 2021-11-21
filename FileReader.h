@@ -14,7 +14,7 @@ class FileReader {
         ~FileReader(); // destrutor
         std::vector<TikTokData> readTikTok(std::string tikTokFile); // função que lê o arquivo .csv e passa as informações para um vector
         void writeInBinFile(std::vector<TikTokData> &data); //pega as informações do vector e escreve no arquivo .bin
-
+        void printInfo(std::string tikTokFile);
     private:
 };
 

@@ -1,4 +1,5 @@
 #include "FileReader.h"
+#include <vector>
 
 FileReader::FileReader(){
 
@@ -8,11 +9,11 @@ FileReader::~FileReader(){
 
 }
 
-vector<TikTokData> FileReader::readTikTok(string tikTokFile) {
+std::vector<TikTokData> FileReader::readTikTok(std::string tikTokFile) {
 
-    ifstream file;
-    string info;
-    vector<TikTokData> data;
+    std::ifstream file;
+    std::string info;
+    std::vector<TikTokData> data;
 
     file.open(tikTokFile);
     getline(file, info);
@@ -23,8 +24,8 @@ vector<TikTokData> FileReader::readTikTok(string tikTokFile) {
                 continue;
             }
             else {
-                istringstream dataFromLine(info);
-                string id, review, upvotes, appVersion, postDate;
+                std::istringstream dataFromLine(info);
+                std::string id, review, upvotes, appVersion, postDate;
                 getline(dataFromLine, id, ',');
                 getline(dataFromLine, review, ',');
                 getline(dataFromLine, upvotes, ',');
