@@ -15,49 +15,32 @@ moduloteste::~moduloteste()
 {
 };
 
-void moduloteste::acessaRegistro(int i)
+void moduloteste::acessaRegistro(int i,vector<TikTokData> dados)
 {
-    double Vet[n];
-   
-    
-    FILE *arq;
-
-    n = 100;
-    int result;
-
-    arq = fopen("ArqTeste.dat", "rb");// Abre um arquivo BINÁRIO para LEITURA
-
-    if (arq == NULL)  // Se houve erro na abertura
-    {
-        cout<<"Problemas na abertura do arquivo"<<endl;
-        return;
-    }
-
-    result = fread (&Vet[0], sizeof(double), 100, arq);
-    cout<<"Nro de elementos lidos:"<< result<<endl;
-    cout<<Vet[i]<<endl;
-
-    fclose(arq);
-    
+    cout << "Id: " << dados.at(i).getId() << endl;
+    cout << "Review: " << dados.at(i).getReview() << endl;
+    cout << "UpVotes: " << dados.at(i).getUpVotes() << endl;
+    cout << "AppVersion: " << dados.at(i).getAppVersion() << endl;
+    cout << "PostDate: " << dados.at(i).getPostDate() << endl;
+}  
 
 }
 void moduloteste::testeImportacao()
 {
-    int i;
+    FILE *dados;
+    int i,cout;
 
     cout << "[1] exibir saida" << endl << "[2] salvar em arquivo texto" << endl ;
     cin >> i;
 
     if(i == 1)
     {
-        FILE *dados;
-        int ale,cout;
+        int ale;
 
         for(cout = 0,cout < 10,cout++)
         {
            srand (time(NULL));
            ale = rand() % 3500000;
-
         }
     }
     else if(i == 2)
