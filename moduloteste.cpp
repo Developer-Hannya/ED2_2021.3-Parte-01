@@ -1,5 +1,5 @@
 #include <iostream>
-#include <stdio.h>
+#include <fstream>
 #include <time.h>
 
 #include "moduloteste.h"
@@ -52,6 +52,7 @@ void moduloteste::testeImportacao(vector<TikTokData> dados)
     }
     else if(i == 2)
     {
+        int ale;
         ofstream wr;
         wr.open("data.bin",ios::binary);
         if(!wr.is_open())
@@ -62,8 +63,17 @@ void moduloteste::testeImportacao(vector<TikTokData> dados)
 
         for(cout = 0,cout < 100,cout++)
         {
-            
+            srand (time(NULL));
+            ale = rand() % 3500000;
+            vector<TikTokData> text;
+            text.at(cout).setId(dados.at(ale).getId());
+            text.at(cout).setReview(dados.at(ale).getReview());
+            text.at(cout).setUpVotes(dados.at(ale).getUpVotes());
+            text.at(cout).setAppVersion(dados.at(ale).getAppVersion());
+            text.at(cout).setPostDate(dados.at(ale).getPostDate());
+
         }
+        wr.close();
     }
     else
     {
@@ -71,4 +81,3 @@ void moduloteste::testeImportacao(vector<TikTokData> dados)
         return; 
     }
 }
-
