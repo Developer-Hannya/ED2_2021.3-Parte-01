@@ -27,7 +27,6 @@ void moduloteste::acessaRegistro(int i,vector<TikTokData> dados)
 }
 void moduloteste::testeImportacao(vector<TikTokData> dados)
 {
-    FILE *dados;
     int i,cout;
 
     cout << "[1] exibir saida" << endl << "[2] salvar em arquivo texto" << endl ;
