@@ -24,14 +24,14 @@ std::vector<TikTokData> FileReader::readTikTok(std::string tikTokFile) {
             }
             else {
                 std::istringstream dataFromLine(info);
-                std::string id, review, upvotes, appVersion, postDate;
+                std::string id, review, upVotes, appVersion, postDate;
                 getline(dataFromLine, id, ',');
                 getline(dataFromLine, review, ',');
-                getline(dataFromLine, upvotes, ',');
+                getline(dataFromLine, upVotes, ',');
                 getline(dataFromLine, appVersion, ',');
                 getline(dataFromLine, postDate, ',');
                 TikTokData element;
-                element.setInfo(id, review, upvotes, appVersion, postDate);
+                element.setInfo(id, review, atoi(upVotes.c_str()), appVersion, postDate);
                 data.push_back(element);
             }
         }
