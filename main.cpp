@@ -2,20 +2,23 @@
 #include <fstream>
 #include <string>
 #include <time.h>
+#include <vector>
+
+#include "TikTokData.h"
 
 using namespace std;
 
-vector<string> importacao(vector<string> registros,int n)
+vector<TikTokData> importacao(vector<TikTokData> registros,int n)
 {
     int i;
-    vector<string> arranjo;
+    vector<TikTokData> arranjo;
     
      for(i=0,i<n,i++)
      {
         int ale;
         srand (time(NULL));
         ale = rand() % 3500000;
-        arranjo.push_back(resgistros.at(ale));
+        arranjo.push_back(registros.at(ale));
      }
     
     return arranjo;
@@ -25,4 +28,5 @@ int main()
 {
     
 }
+
 
