@@ -10,7 +10,7 @@
 
 using namespace std;
 
-vector<string> importacao(vector<string> registros,int n)
+vector<string> importacao(vector<TikTokData> registros,int n)
 {
     int i;
     vector<string> arranjo;
