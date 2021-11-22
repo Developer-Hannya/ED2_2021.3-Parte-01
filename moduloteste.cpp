@@ -71,7 +71,8 @@ void moduloteste::testeImportacao(vector<TikTokData> dados)
             text.at(cout).setUpVotes(dados.at(ale).getUpVotes());
             text.at(cout).setAppVersion(dados.at(ale).getAppVersion());
             text.at(cout).setPostDate(dados.at(ale).getPostDate());
-
+            
+            wr.write((char *) &text.at(count),text.at(count).size())
         }
         wr.close();
     }
