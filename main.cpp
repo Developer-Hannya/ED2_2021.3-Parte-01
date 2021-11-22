@@ -3,7 +3,6 @@
 #include <string>
 #include <time.h>
 #include <iomanip>
-#include <string>
 #include <vector>
 #include "FileReader.h"
 #include "TikTokData.h"
