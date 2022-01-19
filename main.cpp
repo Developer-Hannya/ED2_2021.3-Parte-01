@@ -3,25 +3,38 @@
 #include <string>
 #include <time.h>
 #include <vector>
+#include <stdio.h> 
+#include <stdlib.h>
 
 #include "TikTokData.h"
 
 using namespace std;
 
-vector<TikTokData> importacao(vector<TikTokData> registros,int n)
+vector<TikTokData> importacao(int n)
 {
-    int i;
-    vector<TikTokData> arranjo;
+    ifstream r;
+    r.open("data.bin",ios::binary);
+
+    if(!r.is_open())
+    {
+        cout << "Nao foi possivel abrir o arquivo." << endl;
+        return exit(EXIT_FAILURE);
+    }
     
-     for(i=0,i<n,i++)
-     {
-        int ale;
-        srand (time(NULL));
-        ale = rand() % 3500000;
-        arranjo.push_back(registros.at(ale));
-     }
-    
-    return arranjo;
+    int count = 0;
+    vector<TikTokData> importados;
+
+    srand(time(NULL)); 
+
+    while(count < n)
+    {
+        int ale = rand() % 3500000;
+        TikTokData elemento;
+        r.read((char*) &elemento,ale*sizeof(TikTokData));
+        importados.push_back(elemento);
+    }
+
+    return importados;
 };
 
 int main()
