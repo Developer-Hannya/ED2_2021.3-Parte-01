@@ -1,8 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <time.h>
+#include <stdio.h> 
+#include <stdlib.h>
+#include <vector>
 
 #include "moduloteste.h"
+#include "TikTokData.h"
 
 
 using namespace std;
@@ -11,22 +15,26 @@ moduloteste::moduloteste()
 {
 };
 
-moduloteste::~moduloteste()
+void moduloteste::acessaRegistro(int i)
 {
-};
+    ifstream r;
+    r.open("data.bin",ios::binary);
 
-void moduloteste::acessaRegistro(int i,vector<TikTokData> dados)
-{
-    cout << "Id: " << dados.at(i).getId() << endl;
-    cout << "Review: " << dados.at(i).getReview() << endl;
-    cout << "UpVotes: " << dados.at(i).getUpVotes() << endl;
-    cout << "AppVersion: " << dados.at(i).getAppVersion() << endl;
-    cout << "PostDate: " << dados.at(i).getPostDate() << endl;
+    if(!r.is_open())
+    {
+        cout << "Nao foi possivel abrir o arquivo." << endl;
+        return exit(EXIT_FAILURE);
+    }
+
+    TikTokData elemento;
+    r.read((char*) &elemento, i*sizeof(TikTokData));
+
+    cout << "Id :" << elemento.getId() << endl << "Review :" << elemento.getReview() << endl << "Upvotes :" << elemento.getUpVotes() << endl << "AppVersion :" << elemento.getAppVersion() << endl << "date :" << elemento.getPostDate() << endl
 };  
 
-void moduloteste::testeImportacao(vector<TikTokData> dados)
+void moduloteste::testeImportacao()
 {
-    int i,cout;
+    int i,N;
 
     cout << "[1] exibir saida" << endl << "[2] salvar em arquivo texto" << endl ;
     cin >> i;
@@ -35,16 +43,29 @@ void moduloteste::testeImportacao(vector<TikTokData> dados)
     {
         int ale;
 
-        for(cout = 0,cout < 10,cout++)
+        for(N = 0;N < 10;N++)
         {
-           srand (time(NULL));
-           ale = rand() % 3500000;
-           cout << "Registro " << cout+1 << ": " << endl;
-           cout << "Id: " << dados.at(i).getId() << endl;
-           cout << "Review: " << dados.at(i).getReview() << endl;
-           cout << "UpVotes: " << dados.at(i).getUpVotes() << endl;
-           cout << "AppVersion: " << dados.at(i).getAppVersion() << endl;
-           cout << "PostDate: " << dados.at(i).getPostDate() << endl;   
+            ifstream r;
+            r.open("data.bin",ios::binary);
+
+            if(!r.is_open())
+            {
+                cout << "Nao foi possivel abrir o arquivo." << endl;
+                return exit(EXIT_FAILURE);
+            }
+
+            TikTokData elemento;
+            srand (time(NULL));
+            ale = rand() % 3500000;
+
+            r.read((char*) &elemento,ale*sizeof(TikTokData));
+
+            cout << "Registro " << N+1 << ": " << endl;
+            cout << "Id: " << elemento.getId() << endl;
+            cout << "Review: " << elemento.getReview() << endl;
+            cout << "UpVotes: " << elemento.getUpVotes() << endl;
+            cout << "AppVersion: " << elemento.getAppVersion() << endl;
+            cout << "PostDate: " << elemento.getPostDate() << endl << endl;   
         }
 
     }
@@ -52,25 +73,25 @@ void moduloteste::testeImportacao(vector<TikTokData> dados)
     {
         int ale;
         ofstream wr;
-        wr.open("data.bin",ios::binary);
-        if(!wr.is_open())
+        ifstream r;
+
+        wr.open("teste.txt");
+        r.open("data.bin",ios::binary);
+
+        if(!wr.is_open() && r.is_open())
         {
             cout << "ERRO:Arquivo nao aberto." << endl;
-            return 1;
+            return exit(EXIT_FAILURE);
         }
 
-        for(cout = 0,cout < 100,cout++)
+        for(cout = 0;cout < 100;cout++)
         {
             srand (time(NULL));
             ale = rand() % 3500000;
-            vector<TikTokData> text;
-            text.at(cout).setId(dados.at(ale).getId());
-            text.at(cout).setReview(dados.at(ale).getReview());
-            text.at(cout).setUpVotes(dados.at(ale).getUpVotes());
-            text.at(cout).setAppVersion(dados.at(ale).getAppVersion());
-            text.at(cout).setPostDate(dados.at(ale).getPostDate());
-            
-            wr.write((char *) &text.at(count),text.at(count).size())
+            TikTokData elemento;
+
+            r.read((char*) &elemento,ale*sizeof(TikTokData));
+            wr.write((char *) &elemento,sizeof(TikTokData));
         }
         wr.close();
     }
